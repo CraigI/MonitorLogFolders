@@ -19,18 +19,18 @@ $AlertCount = 0
 
 function SendAlert
 {
-  $FromAddress = $AlertFrom
-  $ToAddress = $AlertTo
-  $MessageSubject = "Log Drive issue(s) found"
-  $MessageBody = "$global:AlertText"
-  $SendingServer = "<Name or IP of SMTP server>"
+	$FromAddress = $AlertFrom
+	$ToAddress = $AlertTo
+	$MessageSubject = "Log Drive issue(s) found"
+	$MessageBody = "$global:AlertText"
+	$SendingServer = "<Name or IP of SMTP server>"
 
-  ###Create the mail message and add the statistics text file as an attachment
-  $SMTPMessage = New-Object System.Net.Mail.MailMessage $FromAddress, $ToAddress, $MessageSubject, $MessageBody
+	###Create the mail message and add the statistics text file as an attachment
+	$SMTPMessage = New-Object System.Net.Mail.MailMessage $FromAddress, $ToAddress, $MessageSubject, $MessageBody
 
-  ###Send the message
-  $SMTPClient = New-Object System.Net.Mail.SMTPClient $SendingServer
-  $SMTPClient.Send($SMTPMessage)
+	###Send the message
+	$SMTPClient = New-Object System.Net.Mail.SMTPClient $SendingServer
+	$SMTPClient.Send($SMTPMessage)
 }
 
 if ((Test-Path $RecordCSV) -eq $false)
